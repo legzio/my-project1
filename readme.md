@@ -1,1 +1,3 @@
-Pierwszy plik z VSCode go Git
+# Pierwszy plik z VSCode go Git
+
+- second commit

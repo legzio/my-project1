@@ -21,22 +21,29 @@ def step3(plaintext, shift=4):
     loweralpha = string.ascii_lowercase
     shifted_string = loweralpha[shift:] + loweralpha[:shift]
     converted = string.maketrans(loweralpha, shifted_string)
+    print (loweralpha[shift:], " , ", loweralpha[:shift])
     return plaintext.translate(converted)
 
 def make_secret(plain, count):
 	a = '2{}'.format(b64encode(plain))
         print ('pierwsze a: ', a)
         print (count, range(count))
-	for count in xrange(count):
+	for count in range(count):
 		r = random.choice(secret_encoding)
 		si = secret_encoding.index(r) + 1
 		_a = globals()[r](a)
 		a = '{}{}'.format(si, _a)
-        print (r, si)
+        print (r, si, a, _a)
 	return a
 
+cipher = step3(secret)
+print cipher
+plain = step3(cipher, -4)
+print plain
+
+
 if __name__ == '__main__':
-	print make_secret(secret, count=1) 
+	print make_secret(secret, count=10) 
 
 
 
